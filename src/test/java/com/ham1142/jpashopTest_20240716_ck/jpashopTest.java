@@ -19,7 +19,7 @@ public class jpashopTest {
     MemberRepository memberRepository; // 애를 di 해야함 디펜전시 인젝션
 
     @Test
-    @DisplayName("회원 가입 기능 테스트")
+    @DisplayName("회원 가입 기능 테스트") // 인설트 insect
     public void joinMember() {
 
         Member member = new Member();
@@ -35,7 +35,7 @@ public class jpashopTest {
     }
 
     @Test
-    @DisplayName("회원번호(기본키)로 검색 테스트")
+    @DisplayName("회원번호(기본키)로 검색 테스트") // 셀렉트 selcet
     public void memberNumSearch() {
     Optional<Member> memberOptional = memberRepository.findById(2L); // 회원번호(기본키)로 검색 - 2L : long 타입 인 membernum 2번 이라는 뜻
     // Optional 타입으로 반환을 받으면 null 값으로 반환되었을때도 에러가 안나고 null 값 그래도 저장됨
@@ -106,7 +106,7 @@ public class jpashopTest {
     @Test
     @DisplayName("회원목록 검색 후 나이의 내림차순 정렬")
     public void memberSearch2() {
-    List<Member> memberList = memberRepository.findAllAndOrderByAgeDesc();
+    List<Member> memberList = memberRepository.findAllByOrderByAgeDesc();
 
         for(Member member:memberList) {
 
@@ -115,6 +115,42 @@ public class jpashopTest {
             System.out.print(member.getMembername() + " / ");
             System.out.println(member.getAge() + " / ");
         }
+
+    }
+
+    @Test
+    @DisplayName("회원 정보 수정")
+    public void modifyMember() { // 회원 정보 수정 - 업데이트 - update
+        Optional<Member> memberOptional = memberRepository.findById(2L); // 김사자 2번 회원 찾기
+
+        assertTrue(memberOptional.isPresent()); // null 값 여부 확인(테스트용) - 값이 있는지 테스트용으로 확인
+
+        Member member = memberOptional.get();
+
+        member.setMembername("김유신"); // 이름 수정
+
+        Member saveMember = memberRepository.save(member);
+
+        System.out.println(saveMember.toString());
+
+    }
+
+    @Test
+    @DisplayName("회원 번호로 검색 삭제")
+    public void deleteMember() { // 회원 정보 수정 - 업데이트 - update
+        allMemberList();
+        memberRepository.deleteById(4L);
+        allMemberList();
+
+    }
+
+    @Test
+    @DisplayName("회원 이름으로 검색 삭제")
+    public void deleteMember2() { // 회원 정보 수정 - 업데이트 - update
+        allMemberList();
+        memberRepository.deleteAllByMembername("김고양");
+        allMemberList();
+
 
     }
 
