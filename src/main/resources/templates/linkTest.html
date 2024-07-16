@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/test.css}">
+    <title>연습</title>
+</head>
+<body>
+
+    <a th:href="@{http://naver.com}"><div class="test">안녕하세요!!</div></a><br>
+
+    <a th:href="@{loginOk(id='tiger',pw='12345')}">로그인OK</a>
+
+    <img th:src="@{img/rabbit.jpg}">
+
+
+</body>
+</html>

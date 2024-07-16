@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>layout</title>
+</head>
+<body>
+    <!-- 저는 본문 content가 보이는 영역입니다 -->
+    <div th:replace="include/header::header"></div>
+    <div th:replace="include/footer::footer"></div>
+
+</body>
+</html>

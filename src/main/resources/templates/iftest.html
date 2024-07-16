@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>if연습</title>
+</head>
+<body>
+    <div th:if="${member.age > 19}" th:text="${temp}">성년</div>
+    <div th:nuless="${member.age < 19}" th:text="${temp}">미성년</div>
+    <!-- nuless : 그렇지 않으면-->
+    <!-- conteoller 에서 temp 값이 모델이 싣어서 올 경우 해당 값을 첨부 할 수도 있다 -->
+
+</body>
+</html>
